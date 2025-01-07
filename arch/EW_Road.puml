@@ -1,0 +1,19 @@
+@startuml
+title EW_ROAD_Update State Machine
+
+state "TL_RED" as EW_RED
+state "TL_YELLOW" as EW_YELLOW
+state "TL_RED_YELLOW" as EW_RED_YELLOW
+state "TL_GREEN" as EW_GREEN
+state "TL_PEDESTRIAN" as EW_PEDESTRIAN
+
+[*] --> EW_RED : Initial State
+
+EW_RED --> EW_PEDESTRIAN : NS_ROAD_IsPedestrianActive() = TRUE
+EW_RED --> EW_RED_YELLOW : Timer Expires (TLC_EW_RED_TIME_S)
+EW_RED_YELLOW --> EW_GREEN : Timer Expires (TLC_EW_RED_YELLOW_TIME_S)
+EW_GREEN --> EW_YELLOW : Timer Expires (TLC_EW_GREEN_TIME_S)
+EW_YELLOW --> EW_RED : Timer Expires (TLC_EW_YELLOW_TIME_S)
+EW_PEDESTRIAN --> EW_RED : Timer Expires (TLC_PEDESTRIAN_TIME_S)
+
+@enduml

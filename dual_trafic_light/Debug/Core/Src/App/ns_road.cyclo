@@ -1,0 +1,3 @@
+../Core/Src/App/ns_road.c:39:6:NS_ROAD_Init	1
+../Core/Src/App/ns_road.c:53:6:NS_ROAD_Update	12
+../Core/Src/App/ns_road.c:156:6:NS_ROAD_IsPedestrianActive	1

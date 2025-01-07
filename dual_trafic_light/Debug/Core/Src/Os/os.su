@@ -1,0 +1,11 @@
+../Drivers/CMSIS/Include/core_cm3.h:1639:22:__NVIC_SetPriority	16	static
+../Drivers/CMSIS/Include/core_cm3.h:1834:26:SysTick_Config	16	static
+../Core/Src/Os/os.c:60:7:OS_voidInit	16	static
+../Core/Src/Os/os.c:75:15:OS_voidCreatTask	32	static
+../Core/Src/Os/os.c:101:6:OS_voidStart	4	static
+../Core/Src/Os/os.c:111:6:OS_Scheduler	16	static
+../Core/Src/Os/os.c:142:6:OS_voidPuseTask	24	static
+../Core/Src/Os/os.c:161:6:OS_voidResumeTask	24	static
+../Core/Src/Os/os.c:179:6:OS_voidKillTask	24	static
+../Core/Src/Os/os.c:199:10:OS_voidGetExcutionNumbers	24	static
+../Core/Src/Os/os.c:218:10:OS_GetCurrentTick	4	static

@@ -1,0 +1,12 @@
+@startuml
+title PEDESTRIAN_Update State Machine
+
+state "IDLE" as PED_IDLE : Pedestrian Red
+state "ACTIVE" as PED_ACTIVE : Pedestrian Green
+
+[*] --> PED_IDLE : Initial State
+
+PED_IDLE --> PED_ACTIVE : Button Pressed (SW_PRESSED)
+PED_ACTIVE --> PED_IDLE : NS_ROAD_IsPedestrianActive() = FALSE
+
+@enduml

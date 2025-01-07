@@ -1,0 +1,4 @@
+../Core/Src/App/pedestrian.c:39:6:PEDESTRIAN_Init	1
+../Core/Src/App/pedestrian.c:56:6:PEDESTRIAN_Update	3
+../Core/Src/App/pedestrian.c:95:7:PEDESTRIAN_GetRequest	1
+../Core/Src/App/pedestrian.c:104:6:PEDESTRIAN_ClearRequest	1

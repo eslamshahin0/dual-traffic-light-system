@@ -1,0 +1,4 @@
+../Core/Src/Hal/sw.c:37:6:SW_Init	4	static
+../Core/Src/Hal/sw.c:50:6:SW_Update	16	static
+../Core/Src/Hal/sw.c:68:12:SW_GetState	16	static
+../Core/Src/Hal/sw.c:82:13:sw_monitor	24	static

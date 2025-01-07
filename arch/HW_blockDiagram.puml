@@ -1,0 +1,32 @@
+@startuml
+package "Hardware Components" {
+    component "MCU" as MCU {
+        component "GPIO" as GPIO
+        component "UART" as UART
+    }
+
+    component "LEDs" as LEDs {
+        component "NS_RED_LED" as NSRedLED
+        component "NS_YELLOW_LED" as NSYellowLED
+        component "NS_GREEN_LED" as NSGreenLED
+        component "EW_RED_LED" as EWRedLED
+        component "EW_YELLOW_LED" as EWYellowLED
+        component "EW_GREEN_LED" as EWGreenLED
+        component "PEDESTRIAN_RED_LED" as PedestrianRedLED
+        component "PEDESTRIAN_GREEN_LED" as PedestrianGreenLED
+    }
+
+    component "Button" as Button {
+        component "PEDESTRIAN_BUTTON" as PedestrianButton
+    }
+
+    component "UART Interface" as UARTInterface {
+        component "USART1" as USART1
+    }
+
+    MCU --> LEDs : Controls
+    MCU --> Button : Reads
+    MCU --> UARTInterface : Communicates
+}
+
+@enduml

@@ -1,0 +1,4 @@
+../Core/Src/App/pedestrian.c:39:6:PEDESTRIAN_Init	4	static
+../Core/Src/App/pedestrian.c:56:6:PEDESTRIAN_Update	8	static
+../Core/Src/App/pedestrian.c:95:7:PEDESTRIAN_GetRequest	4	static
+../Core/Src/App/pedestrian.c:104:6:PEDESTRIAN_ClearRequest	4	static
