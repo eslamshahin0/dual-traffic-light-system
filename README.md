@@ -5,13 +5,13 @@
 This project implements a **traffic light control system** for a four-way intersection using a **Real-Time Operating System (RTOS) with Finite State Machine (FSM)**. The system controls traffic lights for **North-South (NS)** and **East-West (EW)** roads and includes a **pedestrian crossing feature**. The implementation is based on the STM32 microcontroller.
 
 #### Refrance Design 
-![HW](rm_img/road.jpg)
-![HW](rm_img/timing.jpg)
+![HW](arch/img//road.jpg)
+![HW](arch/img//timing.jpg)
 ---
 
 ## Hardware Setup
 
-![HW](rm_img/hw_setup.jpg)
+![HW](arch/img//hw_setup.jpg)
 
 - **Microcontroller**: STM32
 - **LEDs**:
@@ -26,7 +26,7 @@ This project implements a **traffic light control system** for a four-way inters
 - **UART Interface**:
   - For debugging and logging (optional)
 
-![HW](rm_img/HW_blockDiagram.png)
+![HW](arch/img//HW_blockDiagram.png)
 ---
 
 ## Software Design
@@ -45,7 +45,7 @@ The system is divided into multiple tasks managed by an RTOS:
    - Monitors the pedestrian button state.
    - Detects button presses and triggers pedestrian mode.
 
-![HW](rm_img/SystemDiagram.png)
+![HW](arch/img//SystemDiagram.png)
 ### States
 The traffic lights operate in the following states:
 - **`TL_RED`**: Red light is on.
@@ -59,9 +59,9 @@ The traffic lights operate in the following states:
 ## State Diagram
 Below is the state diagram for the traffic light system:
 
-![HW](rm_img/NS_Road.png)
-![HW](rm_img/EW_Road.png)
-![HW](rm_img/Pedestrian.png)
+![HW](arch/img//NS_Road.png)
+![HW](arch/img//EW_Road.png)
+![HW](arch/img//Pedestrian.png)
 ---
 
 
@@ -70,7 +70,7 @@ Below is the state diagram for the traffic light system:
 ## Setup Instructions
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/traffic-light-system.git
+   git clone https://github.com/eslamshahin0/dual-traffic-light-system.git
    ```
 2. **Open the Project**:
    - Open the project in your IDE (STM32CubeIDE).
@@ -80,10 +80,11 @@ Below is the state diagram for the traffic light system:
    - Connect the LEDs and button to the GPIO pins as defined in `main.c`.
    - Connect the UART interface for debugging (optional).
 
-![HW](rm_img/mcu_pins.png)
+![HW](arch/img//mcu_pins.png)
 ---
 
 ## Code Structure
+- Code doucmentation is done in doxygen format
 - **`main.c`**:
   - Initializes the system, GPIO, and UART.
   - Creates RTOS tasks and starts the scheduler.
@@ -111,7 +112,7 @@ Below is the state diagram for the traffic light system:
 ---
 
 ## Demo
-- A short demo video showing the system in action can be found [here](#) (optional).
+- A short demo video showing the system in action can be found in this repo
 
 ---
 

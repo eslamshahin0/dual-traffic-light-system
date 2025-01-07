@@ -1,0 +1,56 @@
+@startuml
+package "Traffic Light System" {
+    component "OS" as OS {
+        component "Scheduler" as Scheduler
+        component "Task Management" as TaskManagement
+    }
+
+    component "NS_ROAD" as NSRoad {
+        component "NS_ROAD_Init" as NSRoadInit
+        component "NS_ROAD_Update" as NSRoadUpdate
+        component "NS_ROAD_IsPedestrianActive" as NSRoadIsPedestrianActive
+    }
+
+    component "EW_ROAD" as EWRoad {
+        component "EW_ROAD_Init" as EWRoadInit
+        component "EW_ROAD_Update" as EWRoadUpdate
+    }
+
+    component "PEDESTRIAN" as Pedestrian {
+        component "PEDESTRIAN_Init" as PedestrianInit
+        component "PEDESTRIAN_Update" as PedestrianUpdate
+        component "PEDESTRIAN_GetRequest" as PedestrianGetRequest
+        component "PEDESTRIAN_ClearRequest" as PedestrianClearRequest
+    }
+
+    component "SW" as SW {
+        component "SW_Init" as SWInit
+        component "SW_Update" as SWUpdate
+        component "SW_GetState" as SWGetState
+    }
+
+    component "MCU" as MCU {
+        component "GPIO" as GPIO
+        component "UART" as UART
+    }
+
+    component "Main" as Main {
+        component "SystemClock_Config" as SystemClockConfig
+        component "MX_GPIO_Init" as MXGPIOInit
+        component "MX_USART1_UART_Init" as MXUSART1UARTInit
+    }
+
+    OS --> NSRoad : Manages
+    OS --> EWRoad : Manages
+    OS --> Pedestrian : Manages
+    OS --> SW : Manages
+
+    NSRoad --> Pedestrian : Checks Pedestrian State
+    EWRoad --> NSRoad : Syncs with NS Road
+    Pedestrian --> SW : Monitors Button State
+    SW --> MCU : Reads GPIO
+    Main --> OS : Initializes
+    Main --> MCU : Configures
+}
+
+@enduml

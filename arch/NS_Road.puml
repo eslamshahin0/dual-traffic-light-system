@@ -1,50 +1,20 @@
 @startuml
-title Traffic Light State Machine
+title NS_ROAD_Update State Machine
 
-state "NS_ROAD_Update" as NS {
-    state "TL_RED_YELLOW" as NS_RED_YELLOW : NS Red + Yellow, EW Red
-    state "TL_GREEN" as NS_GREEN : NS Green, EW Red
-    state "TL_YELLOW" as NS_YELLOW : NS Yellow, EW Red
-    state "TL_RED" as NS_RED : NS Red, EW Green
-    state "TL_PEDESTRIAN" as NS_PEDESTRIAN : NS Red, EW Red, Pedestrian Green
+state "TL_RED" as NS_RED
+state "TL_YELLOW" as NS_YELLOW
+state "TL_RED_YELLOW" as NS_RED_YELLOW
+state "TL_GREEN" as NS_GREEN
+state "TL_PEDESTRIAN" as NS_PEDESTRIAN
 
-    [*] --> NS_RED_YELLOW
-    NS_RED_YELLOW --> NS_GREEN : Timer Expires
-    NS_GREEN --> NS_YELLOW : Timer Expires
-    NS_YELLOW --> NS_RED : Timer Expires
-    NS_RED --> NS_RED_YELLOW : Timer Expires
-    NS_RED --> NS_PEDESTRIAN : Pedestrian Button Pressed
-    NS_PEDESTRIAN --> NS_RED : Timer Expires
-}
+[*] --> NS_RED_YELLOW : Initial State
 
-state "EW_ROAD_Update" as EW {
-    state "TL_RED" as EW_RED : EW Red, NS Green
-    state "TL_YELLOW" as EW_YELLOW : EW Yellow, NS Red
-    state "TL_GREEN" as EW_GREEN : EW Green, NS Red
-    state "TL_RED_YELLOW" as EW_RED_YELLOW : EW Red + Yellow, NS Red
-    state "TL_PEDESTRIAN" as EW_PEDESTRIAN : EW Red, NS Red, Pedestrian Green
-
-    [*] --> EW_RED
-    EW_RED --> EW_RED_YELLOW : Timer Expires
-    EW_RED_YELLOW --> EW_GREEN : Timer Expires
-    EW_GREEN --> EW_YELLOW : Timer Expires
-    EW_YELLOW --> EW_RED : Timer Expires
-    EW_RED --> EW_PEDESTRIAN : Pedestrian Button Pressed
-    EW_PEDESTRIAN --> EW_RED : Timer Expires
-}
-
-state "PEDESTRIAN_Update" as PED {
-    state "IDLE" as PED_IDLE : Pedestrian Red
-    state "ACTIVE" as PED_ACTIVE : Pedestrian Green
-
-    [*] --> PED_IDLE
-    PED_IDLE --> PED_ACTIVE : Button Pressed
-    PED_ACTIVE --> PED_IDLE : Timer Expires
-}
-
-NS_PEDESTRIAN --> PED_ACTIVE : Pedestrian Mode
-EW_PEDESTRIAN --> PED_ACTIVE : Pedestrian Mode
-PED_ACTIVE --> NS_RED : Timer Expires
-PED_ACTIVE --> EW_RED : Timer Expires
+NS_RED_YELLOW --> NS_GREEN : Timer Expires (TLC_NS_RED_YELLOW_TIME_S)
+NS_GREEN --> NS_YELLOW : Timer Expires (TLC_NS_GREEN_TIME_S)
+NS_YELLOW --> NS_RED : Timer Expires (TLC_NS_YELLOW_TIME_S) AND Pedestrian Request = FALSE
+NS_YELLOW --> NS_PEDESTRIAN : Timer Expires (TLC_NS_YELLOW_TIME_S) AND Pedestrian Request = TRUE
+NS_RED --> NS_RED_YELLOW : Timer Expires (TLC_NS_RED_TIME_S)
+NS_RED --> NS_PEDESTRIAN : Pedestrian Button Pressed
+NS_PEDESTRIAN --> NS_RED : Timer Expires (TLC_PEDESTRIAN_TIME_S)
 
 @enduml
